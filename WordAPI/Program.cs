@@ -10,12 +10,14 @@ namespace WordAPI
 	{
 		static void Main(string[] args)
 		{
-			WordAPI word = new WordAPI(@"C:\Users\Komil\Desktop\tt.docx");
+			WordAPI word = new WordAPI(@"C:\Users\Komil\Desktop\tas.docx");
 			word.GetRegularText("*");
-			foreach (var s in word.Subjects)
-			{
-				Console.WriteLine(s.Question+"\n"+s.Answer+"\n");
-			}
+			//foreach (var s in word.Subjects)
+			//{
+			//	Console.WriteLine(s.Question+"\n"+s.Answer+"\n");
+			//}
+			WordAPIFile file = new WordAPIFile(@"C:\Users\Komil\Desktop\sam.docx", word.Subjects);
+			file.WriteDoc();
 			Console.ReadKey();
 		}
 	}

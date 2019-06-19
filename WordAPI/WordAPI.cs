@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using Xceed.Words.NET;
 namespace WordAPI
 {
-	public class WordAPI
+	public class WordAPI 
 	{
 		private readonly string _path = "";
 		private DocX _document;
-		public List<Subject> Subjects { get; }
+		public IList<Subject> Subjects { get; }
 		public WordAPI(string path)
 		{
 			_path = path;
@@ -20,7 +20,6 @@ namespace WordAPI
 			_document = DocX.Load(_path);
 			Subjects = new List<Subject>();
 		}
-
 		public void GetBoldText()
 		{
 			ClearSubject();
@@ -63,6 +62,7 @@ namespace WordAPI
 				}
 			}
 		}
+
 		public void ClearSubject()
 		{
 			if(Subjects.Count>0)
