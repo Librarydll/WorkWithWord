@@ -22,11 +22,12 @@ namespace WordAPI
 		}
 		public void GetBoldText()
 		{
+			string question = "";
+
 			ClearSubject();
 			int i = 1;
 			foreach (var t in _document.Paragraphs)
 			{
-				string question = "";
 				if (t.IsBold(t.Text))
 				{
 					if (i % 2 == 0)

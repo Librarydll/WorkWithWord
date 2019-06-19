@@ -20,26 +20,31 @@ namespace WordAPI
 			_document.Dispose();
 		}
 
-		public void WriteDoc()
+		public void WriteToTable()
 		{
 			var t = _document.AddTable(Subjects.Count(), 3);
 			int row = 0;
-			int cell = 0;
 			int count = 1;
 			foreach (var item in Subjects)
 			{
-				t.Rows[row].Cells[cell].Paragraphs[0].Append(count.ToString());
-				cell++;
-				t.Rows[row].Cells[cell].Paragraphs[0].Append(item.Question);
-				cell++;
-				t.Rows[row].Cells[cell].Paragraphs[0].Append(item.Answer);
+				t.Rows[row].Cells[0].Paragraphs[0].Append(count.ToString());
+				t.Rows[row].Cells[1].Paragraphs[0].Append(item.Question);
+				t.Rows[row].Cells[2].Paragraphs[0].Append(item.Answer);
 				count++;
 				row++;
-				cell = 0;
 			}
 			_document.InsertTable(t);
 			_document.Save();
 		}
 
+		public void WriteToEmptyDoc()
+		{
+			foreach (var item in Subjects)
+			{
+				_document.InsertParagraph(item.Question).FontSize(18).Bold();
+				_document.InsertParagraph(item.Answer).FontSize(14);
+			}
+			_document.Save();
+		}
 	}
 }
