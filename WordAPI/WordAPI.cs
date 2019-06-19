@@ -42,14 +42,14 @@ namespace WordAPI
 				}
 			}
 		}
-		public void GetRegularText(string reg)
+		public void GetRegularText(string reg="*")
 		{
 			string question = "";
 			ClearSubject();
 			foreach (var t in _document.Paragraphs)
 			{
-				if (t.IsBold(t.Text))
-				{
+				if (t.IsBold(t.Text)&&t.Text.IsQuestion())
+				{			
 					question = t.Text;
 				}
 

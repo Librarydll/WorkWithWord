@@ -13,13 +13,9 @@ namespace WordAPI
 			WordAPI word = new WordAPI(@"C:\Users\Komil\Desktop\test2.docx");
 			//word.GetBoldText();
 			word.GetRegularText("*");
-			//foreach (var s in word.Subjects)
-			//{
-			//	Console.WriteLine(s.Question+"\n"+s.Answer+"\n");
-			//}
 			WordAPIFile file = new WordAPIFile(@"C:\Users\Komil\Desktop\sam.docx", word.Subjects);
-			//file.WriteToTable();
-			file.WriteToEmptyDoc();
+			file.WriteToTable();
+			//file.WriteToEmptyDoc();
 			Console.WriteLine("Done");
 			Console.ReadKey();
 		}
