@@ -10,8 +10,8 @@ namespace WordAPI
 	{
 		static void Main(string[] args)
 		{
-			WordAPI word = new WordAPI(@"C:\Users\Komil\Desktop\test.docx");
-			word.ReadAllLines();
+			WordAPI word = new WordAPI(@"C:\Users\Komil\Desktop\tt.docx");
+			word.GetRegularText("*");
 			foreach (var s in word.Subjects)
 			{
 				Console.WriteLine(s.Question+"\n"+s.Answer+"\n");

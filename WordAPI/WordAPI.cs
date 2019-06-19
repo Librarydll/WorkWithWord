@@ -11,7 +11,7 @@ namespace WordAPI
 	{
 		private readonly string _path = "";
 		private DocX _document;
-		public List<Subject> Subjects { get;}
+		public List<Subject> Subjects { get; }
 		public WordAPI(string path)
 		{
 			_path = path;
@@ -21,8 +21,9 @@ namespace WordAPI
 			Subjects = new List<Subject>();
 		}
 
-		public void ReadAllLines()
+		public void GetBoldText()
 		{
+			ClearSubject();
 			int i = 1;
 			foreach (var t in _document.Paragraphs)
 			{
@@ -40,6 +41,32 @@ namespace WordAPI
 					i++;
 				}
 			}
+		}
+		public void GetRegularText(string reg)
+		{
+			string question = "";
+			ClearSubject();
+			foreach (var t in _document.Paragraphs)
+			{
+				if (t.IsBold(t.Text))
+				{
+					question = t.Text;
+				}
+
+				if (t.Text.IsMatch(reg))
+				{
+					Subjects.Add(new Subject()
+					{
+						Question = question.RemoveReg(reg),
+						Answer = t.Text.RemoveReg(reg)
+					});
+				}
+			}
+		}
+		public void ClearSubject()
+		{
+			if(Subjects.Count>0)
+			Subjects.Clear();
 		}
 	}
 }

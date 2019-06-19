@@ -12,5 +12,15 @@ namespace WordAPI
 		{
 			 return !string.IsNullOrWhiteSpace(text)&& paragraph.MagicText[0].formatting?.Bold == true;
 		}
+
+		public static bool IsMatch(this string text,string reg)
+		{
+			return !string.IsNullOrWhiteSpace(text) && text.StartsWith(reg)==true;
+		}
+
+		public static string RemoveReg(this string text,string reg)
+		{
+			return text.Replace(reg, "").Trim();
+		}
 	}
 }
